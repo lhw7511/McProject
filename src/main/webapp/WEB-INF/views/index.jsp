@@ -100,6 +100,18 @@
 		line-height: 50px;
 		text-align: center;
 	}
+	
+	.footWrap{
+		width: 100%;
+		height: 160px;
+		background-color: #1d1d1d;
+		text-align: center;
+		overflow: hidden;	
+		}
+	.footCon{
+		color: #b4b4b4;
+		font-size: 12px;
+	}
 </style>
 </head>
 <body>
@@ -130,13 +142,24 @@
 		</div>
 		</div>
 		<div id="bannerWrap">
+			<p style="display: none;"><spring:message code="banner" var="ban"></spring:message></p>
 			<div id="textWrap">
 			<spring:message code="way"></spring:message>
 			</div>
 			<div>
-			<img alt="" src="./images/banner.png">
+			<img alt="" src="${ban}">
 			</div>
 		</div>
 	</section>
+	
+	<footer>
+		<div class="footWrap">
+			<p class="footCon" style=" margin-top: 20px;"><spring:message code="footCon1"></spring:message> </p>
+			<p class="footCon" ><spring:message code="footCon2"></spring:message> <a style="color: #ffffff; cursor: pointer;"><spring:message code="footCon3"></spring:message></a> </p>
+			<p class="footCon"><spring:message code="footCon4"></spring:message></p>
+			<p class="footCon" style="margin-bottom: 10px;"><spring:message code="footCon5"></spring:message></p>
+		</div>
+	
+	</footer>
 </body>
 </html>

@@ -92,3 +92,11 @@
 		cursor: pointer;
 		
 	}
+	.icon{
+	color:gray;
+	}
+	.iconTag :hover{
+		color:#777777;
+		
+		
+	}

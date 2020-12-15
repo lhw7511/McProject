@@ -8,7 +8,9 @@
 		</div>
 		<div class="emptyWrap"></div>
 		<div class="logWrap">
-			<a style="color:#999999; cursor: pointer;"><spring:message code="login"></spring:message></a>   &nbsp;|&nbsp;   <a style="color:#999999; cursor: pointer;"><spring:message code="order"></spring:message></a>
+			<a style="color:#999999; cursor: pointer;"><spring:message code="join"></spring:message></a>   &nbsp;|&nbsp;   
+			<a style="color:#999999; cursor: pointer;"><spring:message code="login"></spring:message></a>   &nbsp;|&nbsp;   
+			<a style="color:#999999; cursor: pointer;"><spring:message code="order"></spring:message></a>
 		</div>
 		</div>
 		
@@ -20,17 +22,20 @@
 				</a>
 			</div>
 			<div class="menuWrap">
-				<a class="iconTag">	<i class="fa mcd mcd-burger icon"></i>
+				<i class="fa mcd mcd-burger icon"></i>
+				<a class="iconTag">	
 				 <span><spring:message code="menu"></spring:message> </span></a>
 			
 			</div>
 			<div class="myPageWrap">
-				<a class="iconTag"><i class="fa fa-user icon"></i>
+				<i class="fa fa-user icon"></i>
+				<a class="iconTag">
 				<span><spring:message code="myPage"></spring:message></span></a>
 				
 			</div>
 			<div class="etcWrap">
-				<a class="iconTag"><i class="fa fa-phone icon"></i>
+				<i class="fa fa-phone icon"></i>
+				<a class="iconTag">
 				<span><spring:message code="etc"></spring:message></span></a>
 				
 			</div>
