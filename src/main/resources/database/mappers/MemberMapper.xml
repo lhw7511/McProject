@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace="com.mc.p1.member.MemberMapper">
+	
+	<select id="getIdCheck" parameterType="MemberVo" resultType="MemberVo">
+		select id from member where id=#{id}
+	</select>
+	
+	<insert id="setMemberInsert" parameterType="MemberVo">
+		insert into member values(#{id},#{pw},#{name},#{phone},#{email},0,sysdate())
+	</insert>
+	
+	<insert id="setAddressInsert" parameterType="AddressVO">
+		insert into address values (null,#{id},#{addr})
+	</insert>
+	
+	<select id="getMemberLogin" parameterType="MemberVo" resultMap="getMemberLoginResult">
+		select m.id,m.name,a.addr
+		from member m inner join address a
+		on m.id=a.id
+		where m.id=#{id} and m.pw=#{pw}
+	</select>
+	
+	<resultMap type="MemberVo" id="getMemberLoginResult">
+		<id property="id" column="id"/>
+		<result property="name" column="name"/>
+		<collection property="addressVOs" ofType="AddressVO" javaType="java.util.List">
+		<result property="addr" column="addr"/>
+		</collection>
+	</resultMap>
+	
+</mapper>

@@ -5,8 +5,8 @@
   
   <configuration>
 	<typeAliases>
-	
-		
+		<typeAlias type="com.mc.p1.member.MemberVO" alias="MemberVO"/>
+		<typeAlias type="com.mc.p1.member.AddressVO" alias="AddressVO"/>
 		
 	</typeAliases>
 </configuration> 
