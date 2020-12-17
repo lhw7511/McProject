@@ -19,6 +19,43 @@ public class MemberController {
 	@Autowired
 	private MemberService memberService;
 	
+	
+	@PostMapping("memberDelete")
+	public ModelAndView setDelete(MemberVO memberVO,HttpSession session)throws Exception{
+		ModelAndView mv = new ModelAndView();
+		int result=memberService.setDelete(memberVO);
+		if(result>0) {
+			session.invalidate();
+		}
+		mv.addObject("msg", result);
+		mv.setViewName("common/ajaxResult");
+		return mv;
+	}
+	
+	@GetMapping("myPage")
+	public ModelAndView getMyPage(HttpSession session,MemberVO memberVO) throws Exception {
+		memberVO = (MemberVO) session.getAttribute("member");
+		memberVO=memberService.getOne(memberVO);
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("vo", memberVO);
+		mv.setViewName("member/myPage");
+		return mv;
+	}
+	
+	@PostMapping("myPage")
+	public ModelAndView getMyPage(MemberVO memberVO) throws Exception {
+		String message="수정 실패!";
+		ModelAndView mv = new ModelAndView();
+		int result = memberService.setUpdate(memberVO);
+		if(result>0) {
+			message="수정 성공!";		
+		}
+		mv.addObject("msg", message);
+		mv.addObject("path","./myPage");
+		mv.setViewName("common/result");
+		return mv;
+	}
+	
 	@GetMapping("memberLogout")
 	public ModelAndView getMemberLogout(HttpSession session) {
 		ModelAndView mv = new ModelAndView();

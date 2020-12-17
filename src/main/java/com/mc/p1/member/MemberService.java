@@ -12,6 +12,17 @@ public class MemberService {
 	@Autowired
 	private MemberMapper memberMapper;
 
+	public MemberVO getOne(MemberVO memberVO)throws Exception{
+		
+		return memberMapper.getOne(memberVO);
+	}
+	
+	public int setDelete(MemberVO memberVO)throws Exception{
+		return memberMapper.setDelete(memberVO);
+	}
+	public int setUpdate(MemberVO memberVO)throws Exception{
+		return memberMapper.setUpdate(memberVO);
+	}
 	
 	public MemberVO getMemberLogin(MemberVO memberVO)throws Exception{
 		

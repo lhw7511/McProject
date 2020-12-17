@@ -73,19 +73,30 @@
 			</div>
 			<div class="menuWrap">
 				<i class="fa mcd mcd-burger icon"></i>
-				<a class="iconTag">	
+				<a class="iconTag" style="text-decoration: none;">	
 				 <span><spring:message code="menu"></spring:message> </span></a>
 			
 			</div>
-			<div class="myPageWrap">
+			<div class="myPageWrap" >
 				<i class="fa fa-user icon"></i>
-				<a class="iconTag">
-				<span><spring:message code="myPage"></spring:message></span></a>
-				
+				<div id="drop">
+				<a class="iconTag" style="text-decoration: none;">
+				<span><spring:message code="myPage"></spring:message></span>			
+				</a>
+				<div class="dropdown-content">
+   				 <ul  style="list-style: none;">
+     			 <li><a href="#" style="color:white; text-decoration: none;">주문 조회</a></li>
+     			 <li><a href="#" style="color:white; text-decoration: none;">주문 내역</a></li>
+     			 <li><a href="#" style="color:white; text-decoration: none;">주소록</a></li>
+     			 <li><a href="${pageContext.request.contextPath}/member/myPage" style="color:white; text-decoration: none;">계정 설정</a></li>
+     			 <li><a href="#" style="color:white; text-decoration: none;">비밀번호 변경</a></li>
+   				 </ul>
+   				 </div>
+   				 </div>
 			</div>
 			<div class="etcWrap">
 				<i class="fa fa-phone icon"></i>
-				<a class="iconTag">
+				<a class="iconTag" style="text-decoration: none;">
 				<span><spring:message code="etc"></spring:message></span></a>
 				
 			</div>
