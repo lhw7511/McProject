@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace="com.mc.p1.product.ProductMapper">
+	
+	<insert id="setInsert" parameterType="ProductVO">
+		insert into product values(null,#{name},#{kcal},#{mCode},#{wCode},#{fileName},sysdate(),#{price})
+	</insert>
+	
+	<select id="getList" parameterType="ProductPager" resultType="ProductVO">
+		select * from product where mCode=#{mCode} and
+		 wCode in(#{wCode},2)
+		 order by num desc limit #{startRow},#{perPage}
+	</select>
+	
+	
+	<select id="getCount"  parameterType="ProductPager" resultType="Long">
+		select count(num) from product where mCode=#{mCode}
+		and
+		wCode in(#{wCode},2)
+	</select>
+</mapper>

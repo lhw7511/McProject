@@ -73,7 +73,7 @@
 			</div>
 			<div class="menuWrap">
 				<i class="fa mcd mcd-burger icon"></i>
-				<a class="iconTag" style="text-decoration: none;">	
+				<a class="iconTag" style="text-decoration: none;" href="${pageContext.request.contextPath}/product/productList">	
 				 <span><spring:message code="menu"></spring:message> </span></a>
 			
 			</div>
