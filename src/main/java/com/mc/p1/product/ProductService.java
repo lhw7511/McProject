@@ -36,6 +36,10 @@ public class ProductService {
 //		wCode=1;
 //	}
 	
+	public ProductVO getOne(ProductVO productVO)throws Exception{
+		return productMapper.getOne(productVO);
+	}
+	
 	@Value("${product.productInsert.filePath}")
 	private String filePath;
 	public int setInsert(ProductVO productVO,MultipartFile img)throws Exception{

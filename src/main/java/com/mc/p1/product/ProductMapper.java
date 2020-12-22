@@ -14,4 +14,6 @@ public interface ProductMapper {
 	public List<ProductVO> getList(ProductPager productPager)throws Exception;
 	
 	public long getCount(ProductPager productPager)throws Exception;
+	
+	public ProductVO getOne(ProductVO productVO)throws Exception;
 }

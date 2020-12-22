@@ -13,7 +13,7 @@
 						<p style="color: #3d3d3d; font-size: 14px;">${dto.kcal} Kcal</p>
 					</div>
 					<div class="btnWrap">
-						<button type="button" class="selBtn">추가</button>
+						<button type="button" class="selBtn" title="${dto.num}" value="${dto.price}">추가</button>
 					</div>
 				</div>
 			</li>

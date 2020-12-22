@@ -34,7 +34,8 @@
 		width:314px;
 		height : 300px;
 		float: left;
-		background-color: aqua;
+		margin-top: 30px;
+		padding-left: 7px;
 	}
 	.menuForm{
 		width: 190px;
@@ -68,7 +69,7 @@
 	 height: 350px;
 	 background-color: white;
 	 float: left;
-	 border: 2px solid #ddd;
+	 border: 1px solid #ddd;
 	 overflow: hidden;
 	}
 	.itemWrap:nth-child(2n) {
@@ -149,11 +150,57 @@
 			<img alt="" src="../images/btn_more.png" id="moreBtn" >
 			
 		</div>
-		<div class="orderWrap"></div>
+		<div class="orderWrap">
+			<a><img alt="" src="../images/orderPicture.png"></a>
+		</div>
 	</div>
 	<c:import url="../template/footer.jsp"></c:import>
 	
 	<script type="text/javascript">
+
+	$("#listCon").on("click",".selBtn",function(){
+		if(mCode==1){
+				var check=confirm("세트로 주문하시겠습니까?");
+				if(check){
+					 var num=$(this).attr("title");
+					location.href="./productSelect?num="+num;
+					 
+					
+					}
+				else{
+					 var num=$(this).attr("title");
+					 var price=$(this).val();
+					 $.post("../cart/cartInsert",{productNum:num,price:price},function(data){
+						 data=data.trim();
+						 if(data>0){
+								alert("카트에 추가되었습니다");
+							 }else{
+								 alert("카트에 추가실패하였습니다");	
+								 }
+						});
+					}
+
+			
+			}else{
+				 var num=$(this).attr("title");
+				 var price=$(this).val();
+				 $.post("../cart/cartInsert",{productNum:num,price:price},function(data){
+					 data=data.trim();
+					 if(data>0){
+							alert("카트에 추가되었습니다");
+						 }else{
+							 alert("카트에 추가실패하였습니다");	
+							 }
+					});
+				}
+		
+		
+			 
+		});
+
+
+
+	
 	  var curPage=1;
 	  var mCode=${pager.mCode};	 
 	  var totalPage=${pager.totalPage};

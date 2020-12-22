@@ -20,6 +20,15 @@ public class ProductController {
 	@Autowired
 	private ProductService productService;
 	
+	@GetMapping("productSelect")
+	public ModelAndView getOne(ProductVO productVO)throws Exception{
+		productVO=productService.getOne(productVO);
+	
+		 ModelAndView mv = new ModelAndView();
+		 mv.addObject("dto", productVO);
+		 mv.setViewName("product/productSelect");
+		 return mv;
+	}
 	
 	@PostMapping("listPlus")
 	public ModelAndView getPlus(ProductPager productPager) throws Exception{
@@ -37,8 +46,6 @@ public class ProductController {
 		 mv.addObject("mCode", mCode);
 		 ProductPager productPager=productService.getListPage(mCode);
 		 mv.addObject("pager", productPager);
-		 System.out.println(productPager.getmCode());
-		 System.out.println(productPager.getTotalPage());
 		 mv.setViewName("product/productList");
 		return mv;
 	}

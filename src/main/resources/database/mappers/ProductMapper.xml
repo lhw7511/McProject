@@ -21,4 +21,8 @@
 		and
 		wCode in(#{wCode},2)
 	</select>
+	
+	<select id="getOne" resultType="ProductVO" parameterType="ProductVO">
+		select * from product where num=#{num}
+	</select>
 </mapper>
