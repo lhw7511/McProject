@@ -8,4 +8,8 @@
 	<insert id="setInsert" parameterType="CartVO">
 		insert into cart values(null,#{productNum},1,#{setCheck},#{side},#{drink},#{memberId},#{price})
 	</insert>
+	
+	<select id="getList" parameterType="CartVO" resultType="CartVO">
+		select * from cart where memberId=#{memberId}
+	</select>
 </mapper>
