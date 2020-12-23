@@ -2,7 +2,7 @@ package com.mc.p1.util;
 
 import lombok.Data;
 
-@Data
+
 public class ProductPager {
 
 	private long startRow;
@@ -33,6 +33,48 @@ public class ProductPager {
 	}
 	
 	
+	
+	
+	public long getStartRow() {
+		return startRow;
+	}
+
+	public void setStartRow(long startRow) {
+		this.startRow = startRow;
+	}
+
+	public long getPerPage() {
+		return perPage;
+	}
+
+	public void setPerPage(long perPage) {
+		this.perPage = perPage;
+	}
+
+	public int getwCode() {
+		return wCode;
+	}
+
+	public void setwCode(int wCode) {
+		this.wCode = wCode;
+	}
+
+	public long getTotalCount() {
+		return totalCount;
+	}
+
+	public void setTotalCount(long totalCount) {
+		this.totalCount = totalCount;
+	}
+
+	public long getTotalPage() {
+		return totalPage;
+	}
+
+	public void setTotalPage(long totalPage) {
+		this.totalPage = totalPage;
+	}
+
 	public int getCurPage() {
 		if(this.curPage==null) {
 			this.curPage=1;

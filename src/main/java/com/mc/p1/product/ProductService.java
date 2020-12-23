@@ -55,14 +55,14 @@ public class ProductService {
 	
 	public List<ProductVO> getListPlus(ProductPager productPager)throws Exception{
 		productPager.makeRow();
-		productPager.setWCode(wCode);
+		productPager.setwCode(wCode);
 		return productMapper.getList(productPager);
 	}
 	
 	public ProductPager getListPage(int mCode)throws Exception{
 		ProductPager productPager = new ProductPager();
 		productPager.setmCode(mCode);
-		productPager.setWCode(wCode);
+		productPager.setwCode(wCode);
 		productPager.setTotalCount(productMapper.getCount(productPager));
 		productPager.makePage();
 		

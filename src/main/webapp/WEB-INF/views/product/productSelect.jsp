@@ -24,7 +24,7 @@
 }
 
 .headWrap{
-	margin: 0px auto 50px auto;
+	margin: 50px auto 50px auto;
 	width: 1140px;
 	height: 150px;
 
