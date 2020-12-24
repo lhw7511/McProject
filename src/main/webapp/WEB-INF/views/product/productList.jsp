@@ -190,23 +190,24 @@
 
 .orderWrap {
 	width: 314px;
-	height: 1000px;
+	margin-bottom:100px;
 	float: left;
 	margin-top: 30px;
 	overflow: hidden;
+	border: 1px solid #ddd;
 }
 
 .orderInfoWrap {
 	width: 312px;
-	height: 400px;
+	height: 200px;
 	overflow: hidden;
-	border: 1px solid #ddd;
+	border-bottom: 1px solid #ddd;
 }
 
 .cartWrap {
 	width: 312px;
 	height: 150px;
-	border: 1px solid #ddd;
+	border-bottom: 1px solid #ddd;
 	
 }
 .cartImgWrap {
@@ -272,7 +273,7 @@
 					style="width: 312px; height: 40px; text-align: center; font-size: 18px; line-height: 40px; border-bottom: 1px solid #ddd;">내
 					주문 정보</div>
 				<div
-					style="width: 312px; height: 120px; border-bottom: 1px solid #ddd;">
+					style="width: 312px; height: 120px; ">
 					<p
 						style="color: #999999; font-size: 18px; margin-top: 20px; margin-left: 10px;">배달
 						주소</p>
@@ -281,47 +282,17 @@
 					</select>
 				</div>
 
-				<div
-					style="width: 312px; height: 180px; background-color: white; padding-top: 30px;">
-					<span
-						style="font-size: 20px; font-weight: bold; margin-left: 31px;">총
-						주문합계:</span> <input type="text" value="2000000"
-						style="border: none; font-size: 20px; font-weight: bold; color: #44900c; width: 120px"
-						readonly="readonly">
-					<button id="orderBtn" style="margin-left: 31px; margin-top: 40px;">결제</button>
-				</div>
+				
 			</div>
 			
-			
-			<div class="cartWrap">
-				<div class="cartImgWrap">
-					<img alt="" src="../upload/product/58c66b88-94fd-43c5-817f-6453e850baf2_de4.png" style="width: 100px; height: 100px;">
-				</div>
-				<div class="cartInfoWrap">
-					<p>리치 포테이토 버거</p>
-					<ul>
-						<li>코카-콜라® - 미디엄</li>
-						<li>후렌치 후라이 - 미디엄</li>
-					</ul>
-					<p style="color: #44900c; font-size: 15px; margin-left: 100px; font-weight: bold;">₩ 1,700</p>
-				</div>
+			<div id="carts">
+				
 			</div>
 			
-			
-			
-			<div class="cartWrap">
-				<div class="cartImgWrap">
-					<img alt="" src="../upload/product/58c66b88-94fd-43c5-817f-6453e850baf2_de4.png" style="width: 100px; height: 100px;">
-				</div>
-				<div class="cartInfoWrap">
-					<p>리치 포테이토 버거</p>
-					
-					<p style="color: #44900c; font-size: 15px; margin-left: 100px; font-weight: bold;">₩ 1,700</p>
-				</div>
-			</div>
 			
 		</div>
 			
+		
 		
 	</div>
 	
@@ -335,14 +306,14 @@
 			<div class="modal-content"
 				style="width: 420px; height: 300px; text-align: center;">
 				<button type="button" class="close" data-dismiss="modal">&times;</button>
-				<button class="modelBtn" style="margin-left: 20px;" id="solo">단품주문</button>
-				<button class="modelBtn" style="margin-left: 30px;" id="set">세트주문</button>
+				<button class="modelBtn" style="margin-left: 20px;" id="solo" type="button">단품주문</button>
+				<button class="modelBtn" style="margin-left: 30px;" id="set" type="button">세트주문</button>
 			</div>
 
 		</div>
 	</div>
 
-
+	
 
 	<div class="modal fade" id="setModal" role="dialog">
 		<div class="modal-dialog">
@@ -484,72 +455,90 @@
 	<c:import url="../template/footer.jsp"></c:import>
 
 	<script type="text/javascript">
+	var num;
+	var price;
+
+	$("#solo").click(function() {
+		
+		$.post("../cart/cartInsert", {
+			productNum : num,
+			price : price
+		}, function(data) {
+			data = data.trim();
+			if (data > 0) {
+				alert("카트에 추가되었습니다");
+			} else {
+				alert("카트에 추가실패하였습니다");
+			}
+			
+			$('#menuModal').modal("hide"); //닫기 
+			getCartList();
+		});
+	});
+	
+	$("#set").click(function() {
+		$('#menuModal').modal("hide"); //닫기 
+		$('#setModal').modal("show");
+		$('#modalPrice').val(price * 1 + 1700);	
+	});
+	$("#insertBtn").click(function() {
+
+		var side;
+		var drink;
+		$(".side").each(function() {
+
+			if ($(this).prop("checked")) {
+				side = $(this).val();
+
+			}
+		});
+
+		$(".drink").each(function() {
+
+			if ($(this).prop("checked")) {
+				drink = $(this).val();
+
+			}
+		});
+
+		$.post("../cart/cartInsert", {
+			productNum : num,
+			price : price,
+			side : side,
+			drink : drink,
+			setCheck : 1
+		}, function(data) {
+			data = data.trim();
+			if (data > 0) {
+				alert("카트에 추가되었습니다");
+			} else {
+				alert("카트에 추가실패하였습니다");
+			}
+			$('#setModal').modal("hide");
+			getCartList();
+		});
+
+	});
+		
+	
+	
 		$("#listCon").on("click", ".selBtn", function() {
+			num = $(this).attr("title");
+			price = $(this).val();
 			if (mCode == 1) {
-				var num = $(this).attr("title");
-				var price = $(this).val();
+				
+				
 				$('#menuModal').modal("show");
-				$("#set").click(function() {
-					$('#menuModal').modal("hide"); //닫기 
-					$('#setModal').modal("show");
-					$('#modalPrice').val(price * 1 + 1700);
-					$("#insertBtn").click(function() {
+				
 
-						var side;
-						var drink;
-						$(".side").each(function() {
 
-							if ($(this).prop("checked")) {
-								side = $(this).val();
-
-							}
-						});
-
-						$(".drink").each(function() {
-
-							if ($(this).prop("checked")) {
-								drink = $(this).val();
-
-							}
-						});
-
-						$.post("../cart/cartInsert", {
-							productNum : num,
-							price : price,
-							side : side,
-							drink : drink,
-							setCheck : 1
-						}, function(data) {
-							data = data.trim();
-							if (data > 0) {
-								alert("카트에 추가되었습니다");
-							} else {
-								alert("카트에 추가실패하였습니다");
-							}
-							$('#setModal').modal("hide");
-						});
-
-					});
-				});
-				$("#solo").click(function() {
-
-					$.post("../cart/cartInsert", {
-						productNum : num,
-						price : price
-					}, function(data) {
-						data = data.trim();
-						if (data > 0) {
-							alert("카트에 추가되었습니다");
-						} else {
-							alert("카트에 추가실패하였습니다");
-						}
-						$('#menuModal').modal("hide"); //닫기 
-					});
-				});
+				
+				
+				
+			
 
 			} else {
-				var num = $(this).attr("title");
-				var price = $(this).val();
+				
 				$.post("../cart/cartInsert", {
 					productNum : num,
 					price : price
@@ -557,9 +546,12 @@
 					data = data.trim();
 					if (data > 0) {
 						alert("카트에 추가되었습니다");
+						
 					} else {
 						alert("카트에 추가실패하였습니다");
+						
 					}
+					getCartList();
 				});
 			}
 
@@ -567,17 +559,17 @@
 
 		var curPage = 1;
 		var mCode = ${pager.mCode};
-		
-			
-	
 		var totalPage = ${pager.totalPage};
-		
-		
 		getList(curPage, mCode);
+		getCartList();
+		
+		
 		$("#moreBtn").click(function() {
 			curPage = curPage + 1;
 			getList(curPage, mCode);
 		});
+		
+		
 
 		function getList(curPage, mCode) {
 
@@ -592,6 +584,30 @@
 			}
 
 		}
-	</script>
+		var finalPrice=0;
+		function getCartList(){
+			$.post("../cart/cartList",{},function(data){
+				 $("#carts").empty();
+				 $("#carts").append(data);
+				});
+
+		
+			
+		}
+
+		$(".orderWrap").on("click",".removeBtn",function(){
+				var num=$(this).attr("title");
+				$.post("../cart/cartDelete",{num:num},function(data){
+					if(data>0){
+							alert("삭제되었습니다");
+							getCartList();
+						}else{
+							alert("삭제되지 못하였습니다");
+							getCartList();
+							}
+					});
+				
+			});
+			</script>
 </body>
 </html>

@@ -9,7 +9,38 @@
 		insert into cart values(null,#{productNum},1,#{setCheck},#{side},#{drink},#{memberId},#{price})
 	</insert>
 	
-	<select id="getList" parameterType="CartVO" resultType="CartVO">
-		select * from cart where memberId=#{memberId}
+	<delete id="setDelete" parameterType="CartVO" >
+		delete from cart where num=#{num}
+	</delete>
+	<select id="getList" parameterType="CartVO" resultMap="getListResult">
+		select c.*,p.name,p.fileName
+		from cart c inner join product p
+		on c.productNum=p.num
+		where c.memberId=#{memberId}
+		order by c.num desc
 	</select>
+	
+	<update id="setAmountUpdate" parameterType="CartVO">
+		update cart set amount=amount+1 where num=#{num}
+	</update>
+	
+	<select id="getCartCheck" parameterType="CartVO" resultType="CartVO">
+		select * from cart where memberId=#{memberId} and productNum=#{productNum} 
+		and side=#{side} and drink =#{drink}
+	</select>
+	
+	<resultMap type="CartVO" id="getListResult">
+		<id property="num" column="num"/>
+		<result property="productNum" column="productNum"/>
+		<result property="amount" column="amount"/>
+		<result property="setCheck" column="setCheck"/>
+		<result property="side" column="side"/>
+		<result property="drink" column="drink"/>
+		<result property="price" column="price"/>
+		
+		<association property="productVO" javaType="ProductVO">
+			<result property="name" column="name"/>
+			<result property="fileName" column="fileName"/>
+		</association>
+	</resultMap>
 </mapper>
