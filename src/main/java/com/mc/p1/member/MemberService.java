@@ -1,5 +1,7 @@
 package com.mc.p1.member;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.BindingResult;
@@ -60,5 +62,10 @@ public class MemberService {
 			result=memberMapper.setAddressInsert(addressVO);
 		}
 		return result;
+	}
+	
+	
+	public List<AddressVO> getAddressList(AddressVO addressVO)throws Exception{
+		 return memberMapper.getAddressList(addressVO);
 	}
 }

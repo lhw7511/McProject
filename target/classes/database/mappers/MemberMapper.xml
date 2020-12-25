@@ -32,4 +32,8 @@
 	<delete id="setDelete" parameterType="MemberVo">
 		delete from member where id=#{id} and  pw=#{pw}
 	</delete>
+	
+	<select id="getAddressList" parameterType="AddressVO" resultType="AddressVO">
+		select * from address where id=#{id}
+	</select>
 </mapper>

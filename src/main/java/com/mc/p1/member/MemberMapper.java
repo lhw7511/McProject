@@ -20,4 +20,7 @@ public interface MemberMapper {
 	public int setUpdate(MemberVO memberVO)throws Exception;
 	
 	public int setDelete(MemberVO memberVO)throws Exception;
+	
+	public List<AddressVO> getAddressList(AddressVO addressVO)throws Exception;
+	
 }

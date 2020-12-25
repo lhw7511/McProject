@@ -2,6 +2,8 @@ package com.mc.p1.product;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,6 +13,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.mc.p1.member.AddressVO;
+import com.mc.p1.member.MemberService;
+import com.mc.p1.member.MemberVO;
 import com.mc.p1.util.ProductPager;
 
 @Controller
@@ -19,6 +24,9 @@ public class ProductController {
 
 	@Autowired
 	private ProductService productService;
+	@Autowired
+	private MemberService memberSerivce;
+	
 	
 	@GetMapping("productSelect")
 	public ModelAndView getOne(ProductVO productVO)throws Exception{
@@ -41,10 +49,16 @@ public class ProductController {
 	}
 	
 	@GetMapping("productList")
-	public  ModelAndView getList(@RequestParam(defaultValue = "1")int mCode) throws Exception {
+	public  ModelAndView getList(@RequestParam(defaultValue = "1")int mCode,HttpSession session,AddressVO addressVO) throws Exception {
 		 ModelAndView mv = new ModelAndView();
 		 mv.addObject("mCode", mCode);
 		 ProductPager productPager=productService.getListPage(mCode);
+		 MemberVO memberVO=(MemberVO) session.getAttribute("member");
+		 if(memberVO!=null) {
+			 addressVO.setId(memberVO.getId());
+			 List<AddressVO> addressVOs = memberSerivce.getAddressList(addressVO);
+			 mv.addObject("addressList", addressVOs);
+		 }
 		 mv.addObject("pager", productPager);
 		 mv.setViewName("product/productList");
 		return mv;

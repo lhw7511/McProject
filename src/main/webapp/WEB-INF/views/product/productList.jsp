@@ -15,7 +15,7 @@
 .wholeWrap {
 	margin: 0 auto;
 	width: 1140px;
-	background-color: yellow;
+	
 }
 
 .meWrap {
@@ -265,9 +265,11 @@
 			<img alt="" src="../images/btn_more.png" id="moreBtn">
 
 		</div>
-
-		<div class="orderWrap">
-			<!-- <a><img alt="" src="../images/orderPicture.png"></a> -->
+		
+		<c:choose >
+			<c:when test="${not empty member}">
+					<div class="orderWrap">
+			
 			<div class="orderInfoWrap">
 				<div
 					style="width: 312px; height: 40px; text-align: center; font-size: 18px; line-height: 40px; border-bottom: 1px solid #ddd;">내
@@ -278,7 +280,9 @@
 						style="color: #999999; font-size: 18px; margin-top: 20px; margin-left: 10px;">배달
 						주소</p>
 					<select style="width: 292px; height: 40px; margin-left: 10px;">
-						<option>서울시 강서구 화곡1동 354-83 삼성블루밍 102동 302호</option>
+						<c:forEach items="${addressList}" var="vo">
+							<option>${vo.addr}</option>
+						</c:forEach>
 					</select>
 				</div>
 
@@ -291,6 +295,16 @@
 			
 			
 		</div>
+			</c:when>
+			
+			<c:otherwise>
+				<div class="orderWrap">
+					<a><img alt="" src="../images/orderPicture.png" style="width: 312px; height: 848px;"></a> 
+				</div>
+			</c:otherwise>
+			
+		</c:choose>
+		
 			
 		
 		
