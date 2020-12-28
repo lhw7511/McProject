@@ -9,6 +9,8 @@
 		<typeAlias type="com.mc.p1.member.AddressVO" alias="AddressVO"/>
 		<typeAlias type="com.mc.p1.product.ProductVO" alias="ProductVO"/>
 		<typeAlias type="com.mc.p1.cart.CartVO" alias="CartVO"/>
+		<typeAlias type="com.mc.p1.order.OrderSumVO" alias="OrderSumVO"/>
+		<typeAlias type="com.mc.p1.order.OrderDetailVO" alias="OrderDetailVO"/>
 		<typeAlias type="com.mc.p1.util.ProductPager" alias="ProductPager"/>
 		<typeAlias type="java.lang.Long" alias="Long"/>
 	</typeAliases>
