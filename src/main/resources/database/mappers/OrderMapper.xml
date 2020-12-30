@@ -13,4 +13,34 @@
 		insert into orderdetail values(null,#{orderNum},#{productNum},#{amount},#{setCheck},#{side},#{drink},#{totalPrice})
 	</insert>
 	
+	
+	<select id="getList" parameterType="OrderSumVO" resultMap="getListResult">
+		select s.*, d. *, p.fileName,p.name
+		from orderSum  s inner join orderDetail  d
+		on (s.num=d.orderNum)
+		inner join product p
+		on (d.productNum = p.num)
+		where s.memberId=#{memberId}
+		and s.regDate between (SELECT DATE_SUB(NOW(), INTERVAL 90 DAY))
+		and now()
+	</select>
+	
+	<resultMap type="OrderSumVO" id="getListResult">
+		<id property="num" column="num"/>
+		<result property="addr" column="addr"/>
+		<result property="finalPrice" column="finalPrice"/>
+		<result property="regDate" column="regDate"/>
+		
+		<collection property="detailVOs" ofType="OrderDetailVO" javaType="java.util.List">
+			<result property="amount" column="amount"/>
+			<result property="setCheck" column="setCheck"/>
+			<result property="side" column="side"/>
+			<result property="drink" column="drink"/>
+			<result property="totalPrice" column="totalPrice"/>
+			<association property="productVO" javaType="ProductVO">
+				<result property="fileName" column="fileName"/>
+				<result property="name" column="name"/>
+			</association>
+		</collection>
+	</resultMap>
 </mapper>

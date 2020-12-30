@@ -42,4 +42,10 @@ public class OrderService {
 		
 		return result;
 	}
+	
+	
+	public List<OrderSumVO> getList(OrderSumVO orderSumVO)throws Exception{
+		return orderMapper.getList(orderSumVO);
+		
+	}
 }

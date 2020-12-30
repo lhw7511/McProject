@@ -86,10 +86,10 @@
 				<div class="dropdown-content">
    				 <ul  style="list-style: none;">
      			 <li><a href="#" style="color:white; text-decoration: none;">주문 조회</a></li>
-     			 <li><a href="#" style="color:white; text-decoration: none;">주문 내역</a></li>
+     			 <li><a href="${pageContext.request.contextPath}/order/orderList" style="color:white; text-decoration: none;">주문 내역</a></li>
      			 <li><a href="#" style="color:white; text-decoration: none;">주소록</a></li>
      			 <li><a href="${pageContext.request.contextPath}/member/myPage" style="color:white; text-decoration: none;">계정 설정</a></li>
-     			 <li><a href="#" style="color:white; text-decoration: none;">비밀번호 변경</a></li>
+     	
    				 </ul>
    				 </div>
    				 </div>
