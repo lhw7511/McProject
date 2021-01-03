@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.mc.p1.member.AddressVO;
+import com.mc.p1.address.AddressVO;
 import com.mc.p1.member.MemberService;
 import com.mc.p1.member.MemberVO;
 import com.mc.p1.util.ProductPager;

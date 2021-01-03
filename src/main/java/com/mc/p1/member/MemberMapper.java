@@ -4,6 +4,8 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 
+import com.mc.p1.address.AddressVO;
+
 @Mapper
 public interface MemberMapper {
 

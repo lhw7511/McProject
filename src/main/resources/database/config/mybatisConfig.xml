@@ -6,7 +6,7 @@
   <configuration>
 	<typeAliases>
 		<typeAlias type="com.mc.p1.member.MemberVO" alias="MemberVO"/>
-		<typeAlias type="com.mc.p1.member.AddressVO" alias="AddressVO"/>
+		<typeAlias type="com.mc.p1.address.AddressVO" alias="AddressVO"/>
 		<typeAlias type="com.mc.p1.product.ProductVO" alias="ProductVO"/>
 		<typeAlias type="com.mc.p1.cart.CartVO" alias="CartVO"/>
 		<typeAlias type="com.mc.p1.order.OrderSumVO" alias="OrderSumVO"/>

@@ -1,4 +1,4 @@
-package com.mc.p1.member;
+package com.mc.p1.address;
 
 import lombok.Data;
 

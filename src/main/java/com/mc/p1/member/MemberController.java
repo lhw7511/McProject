@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.mc.p1.address.AddressVO;
+
 @Controller
 @RequestMapping("/member/**")
 public class MemberController {

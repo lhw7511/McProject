@@ -9,6 +9,8 @@ import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.Length;
 
+import com.mc.p1.address.AddressVO;
+
 import lombok.Data;
 
 @Data
