@@ -107,7 +107,7 @@
 			</div>
 			<div class="etcWrap">
 				<i class="fa fa-phone icon"></i>
-				<a class="iconTag" style="text-decoration: none;">
+				<a class="iconTag" style="text-decoration: none;" href="${pageContext.request.contextPath}/store/storeMap">
 				<span><spring:message code="etc"></spring:message></span></a>
 				
 			</div>
