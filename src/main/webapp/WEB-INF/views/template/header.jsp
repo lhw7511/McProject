@@ -80,7 +80,9 @@
 			<div class="myPageWrap" >
 				<i class="fa fa-user icon"></i>
 				<div id="drop">
-				<a class="iconTag" style="text-decoration: none;">
+				<c:choose>
+					<c:when test="${not empty member}">
+						<a class="iconTag" style="text-decoration: none;">
 				<span><spring:message code="myPage"></spring:message></span>			
 				</a>
 				<div class="dropdown-content">
@@ -92,6 +94,15 @@
      	
    				 </ul>
    				 </div>
+					</c:when>
+					
+					<c:otherwise>
+							<a class="iconTag" style="text-decoration: none;" data-toggle="modal" data-target="#myModal">
+						<span><spring:message code="myPage"></spring:message></span>
+						</a>	
+					</c:otherwise>
+				</c:choose>
+				
    				 </div>
 			</div>
 			<div class="etcWrap">
