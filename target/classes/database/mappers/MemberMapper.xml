@@ -18,7 +18,7 @@
 	</insert>
 	
 	<select id="getMemberLogin" parameterType="MemberVo" resultType="MemberVo">
-		select id,name,auth from member where id=#{id}
+		select id,name,auth from member where id=#{id} and pw=#{pw}
 	</select>
 	
 	<select id="getOne" parameterType="MemberVo" resultType="MemberVo">

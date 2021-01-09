@@ -73,7 +73,7 @@
 				
 				<a style="color:#3d3d3d; cursor: pointer;"><spring:message code="findId"></spring:message></a>
 				|
-				<a style="color:#3d3d3d;  cursor: pointer;"><spring:message code="findPw"></spring:message></a>
+				<a style="color:#3d3d3d;  cursor: pointer;" href="${pageContext.request.contextPath}/member/memberPwFind"><spring:message code="findPw"></spring:message></a>
 			
 				
 			</div>

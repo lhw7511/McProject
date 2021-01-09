@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.mc.p1.address.AddressVO;
+import com.mc.p1.util.MailService;
 
 @Controller
 @RequestMapping("/member/**")
@@ -21,6 +22,29 @@ public class MemberController {
 	@Autowired
 	private MemberService memberService;
 	
+	@Autowired
+	private MailService mailService;
+	
+	@PostMapping("memberPwFind")
+	public ModelAndView pwFind(MemberVO memberVO) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		memberVO=memberService.getOne(memberVO);
+		int result=0;
+		if(memberVO!=null) {
+			String pw=mailService.sendSimpleMessage(memberVO.getEmail());
+			memberVO.setPw(pw);			
+			result=memberService.setUpdate(memberVO);
+		}
+		mv.addObject("msg", result);
+		mv.setViewName("common/ajaxResult");
+		return mv;
+		
+	}
+	
+	@GetMapping("memberPwFind")
+	public void pwFind() {
+		
+	}
 	
 	@PostMapping("memberDelete")
 	public ModelAndView setDelete(MemberVO memberVO,HttpSession session)throws Exception{

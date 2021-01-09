@@ -1,8 +1,15 @@
 package com.mc.p1.member;
 
+import java.sql.Date;
 import java.util.List;
 
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.BindingResult;
 
@@ -15,7 +22,12 @@ public class MemberService {
 
 	@Autowired
 	private MemberMapper memberMapper;
+	
 
+	
+	
+	
+	
 	public MemberVO getOne(MemberVO memberVO)throws Exception{
 		
 		return memberMapper.getOne(memberVO);
