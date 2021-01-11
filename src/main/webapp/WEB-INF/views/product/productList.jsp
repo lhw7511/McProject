@@ -445,37 +445,42 @@
 	
 	
 		$("#listCon").on("click", ".selBtn", function() {
-			num = $(this).attr("title");
-			price = $(this).val();
-			if (mCode == 1) {
-				
-				
-				$('#menuModal').modal("show");
-				
-
-
-				
-				
-				
-			
-
-			} else {
-				
-				$.post("../cart/cartInsert", {
-					productNum : num,
-					price : price
-				}, function(data) {
-					data = data.trim();
-					if (data > 0) {
-						alert("카트에 추가되었습니다");
+			if(${empty member}){
+				$('#myModal').modal("show"); //닫기 
+				}else{
+					num = $(this).attr("title");
+					price = $(this).val();
+					if (mCode == 1) {
 						
+						
+						$('#menuModal').modal("show");
+						
+
+
+						
+						
+						
+					
+
 					} else {
-						alert("카트에 추가실패하였습니다");
 						
+						$.post("../cart/cartInsert", {
+							productNum : num,
+							price : price
+						}, function(data) {
+							data = data.trim();
+							if (data > 0) {
+								alert("카트에 추가되었습니다");
+								
+							} else {
+								alert("카트에 추가실패하였습니다");
+								
+							}
+							getCartList();
+						});
 					}
-					getCartList();
-				});
-			}
+					}
+			
 
 		});
 
