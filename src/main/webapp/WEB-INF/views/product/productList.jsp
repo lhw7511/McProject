@@ -241,7 +241,7 @@
 					<li class="menuList"
 						style="border-bottom: 1px solid #efaf00; box-shadow: 0 1px 1px #d69c00;"><a
 						style="color: #a25716; cursor: pointer; text-decoration: none;"
-						href="./productList?mCode=1">버거&세트</a></li>
+						href="./productList?mCode=1" id="burgerKind"></a></li>
 					<li class="menuList"
 						style="border-bottom: 1px solid #efaf00; box-shadow: 0 1px 1px #d69c00;"><a
 						style="color: #a25716; cursor: pointer; text-decoration: none;"
@@ -320,6 +320,12 @@
 	<c:import url="../template/footer.jsp"></c:import>
 
 	<script type="text/javascript">
+	if(${pager.wCode eq 1}){
+			
+			$("#burgerKind").text("맥모닝&세트");
+		}else{
+			$("#burgerKind").text("버거&세트");
+			}
 	var num;
 	var price;
 
