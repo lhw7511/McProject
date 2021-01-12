@@ -73,7 +73,7 @@
 		 var container = document.getElementById('map'); //지도를 담을 영역의 DOM 레퍼런스
 			var options = { //지도를 생성할 때 필요한 기본 옵션
 				center: new kakao.maps.LatLng(latitude, longitude), //지도의 중심좌표.
-				level: 3 //지도의 레벨(확대, 축소 정도)
+				level: 10 //지도의 레벨(확대, 축소 정도)
 			};
 
 			var map = new kakao.maps.Map(container, options); //지도 생성 및 객체 리턴
@@ -141,10 +141,14 @@
 			    // 마커에 클릭이벤트를 등록합니다
 			    kakao.maps.event.addListener(marker, 'click', function() {
 			        // 마커를 클릭하면 장소명이 인포윈도우에 표출됩니다
+			        
 			        infowindow.setContent('<div style="padding:5px;font-size:12px;">' + place.place_name + '</div>');
 			        infowindow.open(map, marker);
 			    });
 			}
+
+
+			
 		});
 	
 	

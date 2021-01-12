@@ -11,6 +11,7 @@ import javax.mail.internet.MimeMessage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.BindingResult;
 
 import com.mc.p1.address.AddressVO;
@@ -18,6 +19,7 @@ import com.mc.p1.address.AddressVO;
 
 
 @Service
+@Transactional(rollbackFor = Exception.class)
 public class MemberService {
 
 	@Autowired

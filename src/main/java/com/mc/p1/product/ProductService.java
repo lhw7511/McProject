@@ -31,7 +31,7 @@ public class ProductService {
 //	}
 //	
 //	
-//	@Scheduled(cron = " * 39 * * * * ")
+//	@Scheduled(cron = " * 17 * * * * ")
 //	public void setMorningTime() {
 //		wCode=1;
 //	}
