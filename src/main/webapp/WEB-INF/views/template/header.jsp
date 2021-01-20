@@ -91,6 +91,7 @@
      			 <li><a href="${pageContext.request.contextPath}/order/orderList" style="color:white; text-decoration: none;">주문 내역</a></li>
      			 <li><a href="${pageContext.request.contextPath}/address/addressList" style="color:white; text-decoration: none;">주소록</a></li>
      			 <li><a href="${pageContext.request.contextPath}/member/myPage" style="color:white; text-decoration: none;">계정 설정</a></li>
+     			  <li><a href="${pageContext.request.contextPath}/notice/noticeList" style="color:white; text-decoration: none;">공지사항</a></li>
      	
    				 </ul>
    				 </div>

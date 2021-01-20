@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace="com.mc.p1.notice.NoticeMapper">
+	<sql id="getSearch">
+		<choose>
+	 		<when test="kind == 'tt'">
+	 		  title
+	 		</when>
+	 	
+	 		<when test="kind =='wr'">
+	 		 writer
+	 		</when>
+	 		<otherwise>
+	 		 contents
+	 		</otherwise>
+	 	</choose>
+	 		like concat('%', #{search},'%')
+	</sql>
+	
+	<select id="getList" resultType="NoticeVO" parameterType="NoticePager">
+	 select * from notice where
+	 <include refid="getSearch"></include>
+	 		and
+	     	num>0 order by num desc limit #{startRow},#{perPage}
+	</select>
+	
+	
+	<select id="getCount" parameterType="NoticePager" resultType="Long">
+	select count(*) from notice
+	where 
+	<include refid="getSearch"></include>
+	</select>
+	
+	
+	
+	<insert id="setInsert" parameterType="NoticeVO">
+		insert into notice values(null,#{title},#{writer},#{contents},sysdate(),0)
+	</insert>
+</mapper>
