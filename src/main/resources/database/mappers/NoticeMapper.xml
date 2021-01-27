@@ -39,4 +39,16 @@
 	<insert id="setInsert" parameterType="NoticeVO">
 		insert into notice values(null,#{title},#{writer},#{contents},sysdate(),0)
 	</insert>
+	
+	<select id="getOne" parameterType="NoticeVO" resultType="NoticeVO">
+		select * from notice where num=#{num}
+	</select>
+	
+	<delete id="setDelete" parameterType="NoticeVO">
+		delete from notice where num=#{num}
+	</delete>
+	
+	<update id="setUpdate" parameterType="NoticeVO">
+		update notice set title=#{title}, contents=#{contents} where num=#{num}
+	</update>
 </mapper>

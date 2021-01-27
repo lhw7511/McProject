@@ -47,4 +47,16 @@ public class NoticeService {
 		noticePager.makePage();
 		return noticeMapper.getList(noticePager);
 	}
+	
+	public NoticeVO getOne(NoticeVO noticeVO)throws Exception{
+		return noticeMapper.getOne(noticeVO);
+	}
+	
+	public int setDelete(NoticeVO noticeVO)throws Exception{
+		return noticeMapper.setDelete(noticeVO);
+	}
+	
+	public int setUpdate(NoticeVO noticeVO)throws Exception{
+		return noticeMapper.setUpdate(noticeVO);
+	}
 }

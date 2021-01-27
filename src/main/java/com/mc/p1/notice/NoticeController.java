@@ -19,6 +19,53 @@ public class NoticeController {
 	@Autowired
 	private NoticeService noticeService;
 	
+	@PostMapping("noticeUpdate")
+	public ModelAndView noticeUpdate2(NoticeVO noticeVO)throws Exception{
+		ModelAndView mv = new ModelAndView();
+		String message="수정 실패";
+		int result=noticeService.setUpdate(noticeVO);
+		if(result>0) {
+			message="수정 성공";
+		}
+		mv.addObject("msg", message);
+		mv.addObject("path", "./noticeList");
+		mv.setViewName("common/result");
+		return mv;
+	}
+	
+	@GetMapping("noticeUpdate")
+	public ModelAndView noticeUpdate(NoticeVO noticeVO)throws Exception{
+		ModelAndView mv = new ModelAndView();
+		noticeVO=noticeService.getOne(noticeVO);
+		mv.addObject("dto", noticeVO);
+		mv.setViewName("notice/noticeUpdate");
+		return mv;
+		
+	}
+	
+	@GetMapping("noticeDelete")
+	public ModelAndView noticeDelete(NoticeVO noticeVO)throws Exception{
+		ModelAndView mv = new ModelAndView();
+		String message="삭제 실패";
+		int result = noticeService.setDelete(noticeVO);
+		if(result>0) {
+			message="삭제 성공";
+		}
+		mv.addObject("msg", message);
+		mv.addObject("path", "./noticeList");
+		mv.setViewName("common/result");
+		return mv;
+	}
+	
+	@GetMapping("noticeSelect")
+	public ModelAndView noticeSelect(NoticeVO noticeVO)throws Exception {
+		ModelAndView mv = new ModelAndView();
+		noticeVO=noticeService.getOne(noticeVO);
+		mv.addObject("dto", noticeVO);
+		mv.setViewName("notice/noticeSelect");
+		return mv;
+	}
+	
 	@GetMapping("noticeInsert")
 	public void noticeInsert() {
 		
